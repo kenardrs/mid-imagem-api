@@ -32,7 +32,7 @@ import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
-@Path("/v1")
+@Path("/v1/converterImagensParaPdf")
 @RequestScoped
 
 public class ConversorPdfResource {
@@ -52,7 +52,7 @@ public class ConversorPdfResource {
 	// private final String FILE_UPLOAD_PATH = "/Users/kenardrs/uploadfiles/";
 
 	@POST
-	@Path("/converterImagensParaPdf")
+	@Path("multipartFormData")
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	public Response converteImagemParaPdf(@Context HttpServletRequest request) throws Exception {
@@ -97,14 +97,14 @@ public class ConversorPdfResource {
 //				.header("Access-Control-Allow-Origin", "*")
 //	            .entity(jsonObj).build();
 	}
-	
+
 	@POST
-	@Path("/converteImagemJsonParaPdf")
+	@Path("/json")
 	@Consumes(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=UTF-8")
 	public Response converteImagemJsonParaPdf(@Context HttpServletRequest request) throws Exception {
 		String jsonString = IOUtils.toString(request.getInputStream());
-		
+
 		return Response.ok(jsonString).build();
 	}
 
